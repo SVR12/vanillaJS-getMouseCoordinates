@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  
+  <div
+       id="div"
+       style="margin: 24px; display: inline-block; height: 300px; width: 300px;
+              border: 2px solid black; background-color: black;"
+  >
+    
+  </div>
+  <h3 style="margin-left: 24px" id="position">Left: 0, Top: 0 (default)</h3>
+  
+  <script>
+    
+    document.getElementById("div").addEventListener("mousemove", function(event){
+      <!-- console.log(event.target); -->
+      let left, top, offsetLeft, offsetTop;
+      let divRect = event.target.getBoundingClientRect();
+      offsetLeft = divRect.left;
+      offsetTop = divRect.top;
+      left = event.clientX - offsetLeft;
+      top = event.clientY - offsetTop;
+      document.getElementById("position").innerText = "Left: "+left+", Top: "+top;
+    });
+    
+    document.getElementById("div").addEventListener("mouseout", function(event){
+      document.getElementById("position").innerText = "Left: 0, Top: 0 (default)";
+    });
+    
+  </script>
+
+</body>
+</html>
